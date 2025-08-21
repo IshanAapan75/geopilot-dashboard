@@ -145,6 +145,7 @@ import * as z from "zod";
 import { toast } from "sonner";
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
+import { useNavigate } from "react-router-dom";
 
 const formSchema = z.object({
     businessSummary: z.string().min(10, "Please provide at least 10 characters"),
@@ -154,6 +155,8 @@ const formSchema = z.object({
 
 const QuestionsAnswers = () => {
     const [isSubmitted, setIsSubmitted] = useState(false);
+
+    const navigate = useNavigate();
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -167,6 +170,7 @@ const QuestionsAnswers = () => {
     const onSubmit = (values: z.infer<typeof formSchema>) => {
         console.log(values);
         toast.success("Thank you for your responses! We'll be in touch soon.");
+        navigate("/thankyou");
         setIsSubmitted(true);
     };
 
@@ -273,7 +277,7 @@ const QuestionsAnswers = () => {
                                                 variant="outline"
                                                 size="lg"
                                                 className="px-8"
-                                                onClick={() => window.location.href = "/loading"}
+                                                onClick={() => window.location.href = "/thankyou"}
                                             >
                                                 Skip
                                             </Button>
