@@ -179,7 +179,7 @@ const QuestionsAnswers = () => {
                                                 variant="outline"
                                                 size="lg"
                                                 className="px-8"
-                                                onClick={() => window.location.href = "/thankyou"}
+                                                onClick={() => navigate("/thankyou")}
                                             >
                                                 Skip
                                             </Button>
