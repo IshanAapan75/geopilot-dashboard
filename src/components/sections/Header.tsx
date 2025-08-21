@@ -13,7 +13,7 @@ const Header = () => {
 
   const navItems = [
     { label: "What is GAIO?", href: "#solution" },
-    { label: "Services", href: "#services" },
+    { label: "Our Services", href: "#services" },
     { label: "Benefits", href: "#benefits" },
     { label: "Pricing", href: "#pricing" },
   ];

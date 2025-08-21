@@ -40,9 +40,9 @@ const HeroSection = () => {
           </div>
           {/* Main Headline */}
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Don't Just Rank,
+            Don't just rank,
             <span className="gradient-hero bg-clip-text text-transparent animate-gradient">
-              {" "}Get Cited
+              {" "}get cited
             </span>
           </h1>
 

@@ -1,14 +1,14 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { 
-  UserPlus, 
-  Link, 
-  HelpCircle, 
-  Code, 
-  GitPullRequest, 
-  Eye, 
-  Check, 
+import {
+  UserPlus,
+  Link,
+  HelpCircle,
+  Code,
+  GitPullRequest,
+  Eye,
+  Check,
   Settings,
   Crown,
   Zap
@@ -80,11 +80,11 @@ const FlowSection = () => {
             Get Started
           </Badge>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Choose Your 
+            Choose Your
             <span className="gradient-accent bg-clip-text text-transparent"> Optimization Path</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Whether you prefer hands-on control or full automation, we have the perfect 
+            Whether you prefer hands-on control or full automation, we have the perfect
             GAIO solution for your business needs.
           </p>
         </div>
@@ -147,7 +147,7 @@ const FlowSection = () => {
             <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-accent text-accent-foreground">
               Recommended
             </Badge>
-            
+
             <div className="text-center mb-8">
               <div className="w-16 h-16 gradient-accent rounded-full mx-auto flex items-center justify-center mb-4">
                 <Crown className="w-8 h-8 text-white" />
@@ -198,7 +198,7 @@ const FlowSection = () => {
             </div>
 
             <Button variant="hero" className="w-full" size="lg">
-              Get Started Premium
+              Upgrade to Premium
             </Button>
           </Card>
         </div>
@@ -208,8 +208,10 @@ const FlowSection = () => {
           <p className="text-muted-foreground mb-6">
             Not sure which plan is right for you? Let's discuss your specific needs.
           </p>
-          <Button variant="outline" size="lg">
-            Schedule a Consultation
+          <Button variant="outline" size="lg" >
+            <a href="https://calendly.com/ishan-thewelzin/30min">
+              Schedule a Consultation
+            </a>
           </Button>
         </div>
       </div>

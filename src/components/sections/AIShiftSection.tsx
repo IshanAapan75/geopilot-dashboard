@@ -23,7 +23,7 @@ const AIShiftSection = () => {
             
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
               AI chatbots like ChatGPT, Gemini, and Claude are becoming the new front door for information discovery. 
-              When users ask "What's the best solution for X?" your brand needs to be the answer.
+              When users ask "What's the best solution for X?" your brand must be the answer.
             </p>
 
             <div className="space-y-6 mb-8">
@@ -53,7 +53,7 @@ const AIShiftSection = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg mb-2">Zero-Click Answers</h3>
-                  <p className="text-muted-foreground">Users get complete answers without visiting your website—unless AI knows to cite you.</p>
+                  <p className="text-muted-foreground">Users get complete answers without visiting your website, unless AI knows to cite you.</p>
                 </div>
               </div>
             </div>

@@ -34,11 +34,11 @@ const ProblemSection = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Why Traditional SEO 
-            <span className="text-destructive"> Isn't Enough</span>
+            Why traditional SEO 
+            <span className="text-destructive"> isn't enough</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            AI systems don't just look for keywords—they understand context, authority, and semantic meaning. 
+            AI systems don't just look for keywords - they understand context, authority, and semantic meaning. 
             Your traditional SEO strategy is leaving you invisible in the AI era.
           </p>
         </div>

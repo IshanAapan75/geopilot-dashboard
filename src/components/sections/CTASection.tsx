@@ -6,12 +6,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ArrowRight, Zap, Shield, TrendingUp } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useState, type ChangeEvent } from "react";
 
 const CTASection = () => {
   const urgencyPoints = [
     {
       icon: TrendingUp,
-      text: "AI adoption is accelerating—every day matters"
+      text: "AI adoption is accelerating - every day matters"
     },
     {
       icon: Shield,
@@ -24,6 +25,30 @@ const CTASection = () => {
   ];
 
   const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    companyName: "",
+    url: ""
+  });
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({ ...prev, [id]: value }));
+  };
+
+  const handleContinue = () => {
+    // basic required check
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.companyName || !formData.url) {
+      // allow UX: simply proceed to audit form if incomplete
+      navigate("/auditForm");
+      return;
+    }
+    localStorage.setItem("auditFormData", JSON.stringify(formData));
+    navigate("/questionAnswer");
+  };
 
   return (
     <section className="py-24 gradient-hero relative overflow-hidden">
@@ -65,11 +90,21 @@ const CTASection = () => {
                 Start Free Assessment
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
-              <Button variant="outline" size="xl" className="border-white/30 text-white hover:bg-white/10">
+              {/* <Button variant="outline" size="xl" className="border-white/30 text-white hover:bg-white/10">
+                <a href="https://calendly.com/ishan-thewelzin/30min">
+                  Schedule Consultation
+                </a>
+              </Button> */}
+              <Button
+                variant="outline"
+                size="xl"
+                className="border border-white text-white font-semibold bg-transparent rounded-lg px-8 py-4 hover:bg-white/10 transition-colors duration-200"
+              >
                 <a href="https://calendly.com/ishan-thewelzin/30min">
                   Schedule Consultation
                 </a>
               </Button>
+
             </div>
           </div>
 
@@ -82,34 +117,34 @@ const CTASection = () => {
               </p>
             </div>
 
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <Label htmlFor="firstName">First Name *</Label>
-                  <Input id="firstName" placeholder="John" className="mt-1" />
+                  <Input id="firstName" placeholder="John" className="mt-1" value={formData.firstName} onChange={handleChange} />
                 </div>
                 <div>
                   <Label htmlFor="lastName">Last Name *</Label>
-                  <Input id="lastName" placeholder="Smith" className="mt-1" />
+                  <Input id="lastName" placeholder="Smith" className="mt-1" value={formData.lastName} onChange={handleChange} />
                 </div>
               </div>
 
               <div>
                 <Label htmlFor="email">Business Email Address *</Label>
-                <Input id="email" type="email" placeholder="john@company.com" className="mt-1" />
+                <Input id="email" type="email" placeholder="john@company.com" className="mt-1" value={formData.email} onChange={handleChange} />
               </div>
 
               <div>
-                <Label htmlFor="company">Business Name *</Label>
-                <Input id="company" placeholder="Your Company Inc." className="mt-1" />
+                <Label htmlFor="companyName">Business Name *</Label>
+                <Input id="companyName" placeholder="Your Company Inc." className="mt-1" value={formData.companyName} onChange={handleChange} />
               </div>
 
               <div>
-                <Label htmlFor="website">Website URL</Label>
-                <Input id="website" placeholder="https://yourcompany.com" className="mt-1" />
+                <Label htmlFor="url">Website URL</Label>
+                <Input id="url" placeholder="https://yourcompany.com" className="mt-1" value={formData.url} onChange={handleChange} />
               </div>
 
-              <Button variant="hero" size="lg" className="w-full">
+              <Button variant="hero" size="lg" className="w-full" type="button" onClick={handleContinue}>
                 Continue
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
