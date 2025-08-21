@@ -51,7 +51,7 @@ const Header = () => {
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4">
             <Button variant="outline" size="sm" asChild>
-              <Link to="/demo">View Demo</Link>
+              <Link to="/demo">More Info</Link>
             </Button>
             <Button variant="hero" size="sm" onClick={() => navigate("/auditForm")}>
               Get Started

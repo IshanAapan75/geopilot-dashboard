@@ -18,9 +18,17 @@ const formSchema = z.object({
     targetLocations: z.string().min(5, "Please provide at least 5 characters"),
 });
 
+type AuditFormData = {
+    firstName: string;
+    lastName: string;
+    email: string;
+    companyName: string;
+    url: string;
+};
+
 const QuestionsAnswers = () => {
     const [isSubmitted, setIsSubmitted] = useState(false);
-    const [auditFormData, setAuditFormData] = useState<any | null>(null);
+    const [auditFormData, setAuditFormData] = useState<AuditFormData | null>(null);
 
     const navigate = useNavigate();
 
@@ -28,7 +36,7 @@ const QuestionsAnswers = () => {
         const stored = localStorage.getItem("auditFormData");
         if (stored) {
             try {
-                setAuditFormData(JSON.parse(stored));
+                setAuditFormData(JSON.parse(stored) as AuditFormData);
             } catch (e) {
                 setAuditFormData(null);
             }
@@ -75,9 +83,70 @@ const QuestionsAnswers = () => {
             } else {
                 throw new Error("Unexpected response status");
             }
-        } catch (error: any) {
+        } catch (error: unknown) {
             console.error(error);
-            toast.error(error?.response?.data?.message || "Failed to submit. Please try again.");
+            let message = "Failed to submit. Please try again.";
+            if (axios.isAxiosError(error)) {
+                const data = error.response?.data;
+                if (typeof data === "string") {
+                    message = data;
+                } else if (
+                    data &&
+                    typeof (data as Record<string, unknown>).message === "string"
+                ) {
+                    message = (data as { message: string }).message;
+                }
+            }
+            toast.error(message);
+        }
+    };
+
+    const handleSkip = async () => {
+        if (!auditFormData || !auditFormData.url || !auditFormData.email) {
+            toast.error("Please complete the assessment form first.");
+            navigate("/auditForm");
+            return;
+        }
+
+        try {
+            const payload = {
+                url: auditFormData.url,
+                email: auditFormData.email,
+                companyName: auditFormData.companyName,
+                firstName: auditFormData.firstName,
+                lastName: auditFormData.lastName,
+                // store empty answers when skipped
+                questionAnswers: {},
+            };
+
+            const res = await axios.post(
+                "http://localhost:5000/api/v1/submit-form",
+                payload,
+                { headers: { "Content-Type": "application/json" } }
+            );
+
+            if (res.status >= 200 && res.status < 300) {
+                localStorage.removeItem("auditFormData");
+                navigate("/thankyou");
+                setIsSubmitted(true);
+            } else {
+                throw new Error("Unexpected response status");
+            }
+        } catch (error: unknown) {
+            console.error(error);
+            let message = "Failed to submit. Please try again.";
+            if (axios.isAxiosError(error)) {
+                const data = error.response?.data;
+                if (typeof data === "string") {
+                    message = data;
+                } else if (
+                    data &&
+                    typeof (data as Record<string, unknown>).message === "string"
+                ) {
+                    message = (data as { message: string }).message;
+                }
+            }
+            toast.error(message);
         }
     };
 
@@ -179,7 +248,7 @@ const QuestionsAnswers = () => {
                                                 variant="outline"
                                                 size="lg"
                                                 className="px-8"
-                                                onClick={() => navigate("/thankyou")}
+                                                onClick={handleSkip}
                                             >
                                                 Skip
                                             </Button>
