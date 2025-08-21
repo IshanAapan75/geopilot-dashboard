@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle, Globe, MessageSquare, Mail, ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const OnboardingSlide = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
+
+  const navigate = useNavigate();
 
   const steps = [
     {
@@ -30,11 +33,11 @@ const OnboardingSlide = () => {
 
   useEffect(() => {
     setIsVisible(true);
-    
+
     // Auto-advance steps for demo
     const interval = setInterval(() => {
       setActiveStep((prev) => (prev + 1) % steps.length);
-    }, 3000);
+    }, 6000);
 
     return () => clearInterval(interval);
   }, [steps.length]);
@@ -48,12 +51,12 @@ const OnboardingSlide = () => {
             <CheckCircle className="h-4 w-4" />
             <span className="text-sm font-medium">Simple Onboarding</span>
           </div>
-          
+
           <h1 className="text-5xl lg:text-6xl font-bold tracking-tight">
             Get Started in
             <span className="gradient-accent bg-clip-text text-transparent"> 3 Simple Steps</span>
           </h1>
-          
+
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Transform your digital presence for AI search engines with our streamlined onboarding process.
           </p>
@@ -65,37 +68,32 @@ const OnboardingSlide = () => {
             const Icon = step.icon;
             const isActive = activeStep === index;
             const isCompleted = activeStep > index;
-            
+
             return (
               <div
                 key={index}
-                className={`relative transition-all duration-700 delay-${index * 200} ${
-                  isVisible ? 'animate-scale-in' : 'opacity-0'
-                }`}
+                className={`relative transition-all duration-700 delay-${index * 200} ${isVisible ? 'animate-scale-in' : 'opacity-0'
+                  }`}
               >
-                <Card className={`h-full transition-all duration-500 hover:shadow-glow ${
-                  isActive ? 'ring-2 ring-primary shadow-glow scale-105' : 
-                  isCompleted ? 'ring-1 ring-accent/50' : ''
-                }`}>
+                <Card className={`h-full transition-all duration-500 hover:shadow-glow ${isActive ? 'ring-2 ring-primary shadow-glow scale-105' :
+                    isCompleted ? 'ring-1 ring-accent/50' : ''
+                  }`}>
                   <CardContent className="p-8 text-center space-y-6">
                     {/* Step indicator */}
                     <div className="relative">
-                      <div className={`w-16 h-16 mx-auto rounded-full flex items-center justify-center transition-all duration-500 ${
-                        isActive ? 'gradient-hero animate-pulse' :
-                        isCompleted ? 'bg-accent' :
-                        'bg-muted'
-                      }`}>
-                        <Icon className={`h-8 w-8 ${
-                          isActive || isCompleted ? 'text-primary-foreground' : 'text-muted-foreground'
-                        }`} />
+                      <div className={`w-16 h-16 mx-auto rounded-full flex items-center justify-center transition-all duration-1000 ${isActive ? 'gradient-hero animate-pulse' :
+                          isCompleted ? 'bg-accent' :
+                            'bg-muted'
+                        }`}>
+                        <Icon className={`h-8 w-8 ${isActive || isCompleted ? 'text-primary-foreground' : 'text-muted-foreground'
+                          }`} />
                       </div>
-                      
+
                       {/* Step number */}
-                      <div className={`absolute -top-2 -right-2 w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center ${
-                        isActive ? 'bg-primary text-primary-foreground' :
-                        isCompleted ? 'bg-accent text-accent-foreground' :
-                        'bg-muted text-muted-foreground'
-                      }`}>
+                      <div className={`absolute -top-2 -right-2 w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center ${isActive ? 'bg-primary text-primary-foreground' :
+                          isCompleted ? 'bg-accent text-accent-foreground' :
+                            'bg-muted text-muted-foreground'
+                        }`}>
                         {index + 1}
                       </div>
                     </div>
@@ -123,9 +121,8 @@ const OnboardingSlide = () => {
                 {/* Connector arrow */}
                 {index < steps.length - 1 && (
                   <div className="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-10">
-                    <ArrowRight className={`h-6 w-6 transition-colors duration-500 ${
-                      isCompleted ? 'text-accent' : 'text-muted-foreground'
-                    }`} />
+                    <ArrowRight className={`h-6 w-6 transition-colors duration-500 ${isCompleted ? 'text-accent' : 'text-muted-foreground'
+                      }`} />
                   </div>
                 )}
               </div>
@@ -140,7 +137,7 @@ const OnboardingSlide = () => {
             <p className="text-muted-foreground mb-6">
               Join hundreds of businesses already optimizing for the AI search revolution.
             </p>
-            <Button size="lg" className="shadow-glow">
+            <Button size="lg" className="shadow-glow" onClick={() => navigate("/auditForm")}>
               Start Your GEO Journey
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>

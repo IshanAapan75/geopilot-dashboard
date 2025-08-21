@@ -3,9 +3,13 @@ import { Badge } from "@/components/ui/badge";
 import { Navigation, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import logo from "../../assets/logo.png";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const navigate = useNavigate();
 
   const navItems = [
     { label: "What is GAIO?", href: "#solution" },
@@ -20,12 +24,14 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 gradient-hero rounded-lg flex items-center justify-center">
-              <Navigation className="w-5 h-5 text-white" />
-            </div>
+            <img
+              src={logo}   // apna logo file ka path
+              alt="GEO-Pilot Logo"
+              className="h-12 w-auto object-contain"
+            />
             <div>
               <span className="text-xl font-bold">GEO-Pilot</span>
-              <Badge variant="outline" className="ml-2 text-xs">GAIO</Badge>
+              {/* <Badge variant="outline" className="ml-2 text-xs">GAIO</Badge> */}
             </div>
           </div>
 
@@ -47,7 +53,7 @@ const Header = () => {
             <Button variant="outline" size="sm" asChild>
               <Link to="/demo">View Demo</Link>
             </Button>
-            <Button variant="hero" size="sm">
+            <Button variant="hero" size="sm" onClick={() => navigate("/auditForm")}>
               Get Started
             </Button>
           </div>

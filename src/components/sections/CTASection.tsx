@@ -5,6 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ArrowRight, Zap, Shield, TrendingUp } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const CTASection = () => {
   const urgencyPoints = [
@@ -22,6 +23,8 @@ const CTASection = () => {
     }
   ];
 
+  const navigate = useNavigate();
+
   return (
     <section className="py-24 gradient-hero relative overflow-hidden">
       {/* Background Elements */}
@@ -37,12 +40,12 @@ const CTASection = () => {
           {/* Content */}
           <div className="text-white">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              Don't Get Left Behind in the 
+              Don't Get Left Behind in the
               <span className="text-accent-foreground"> AI Revolution</span>
             </h2>
-            
+
             <p className="text-xl text-white/90 mb-8 leading-relaxed">
-              Every day you wait is another day your competitors can establish themselves as 
+              Every day you wait is another day your competitors can establish themselves as
               authoritative sources in AI systems. Secure your brand's future in the AI era today.
             </p>
 
@@ -58,12 +61,14 @@ const CTASection = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="accent" size="xl" className="text-primary font-semibold">
+              <Button variant="accent" size="xl" className="text-primary font-semibold" onClick={() => navigate("/auditForm")}>
                 Start Free Assessment
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
               <Button variant="outline" size="xl" className="border-white/30 text-white hover:bg-white/10">
-                Schedule Consultation
+                <a href="https://calendly.com/ishan-thewelzin/30min">
+                  Schedule Consultation
+                </a>
               </Button>
             </div>
           </div>
@@ -90,12 +95,12 @@ const CTASection = () => {
               </div>
 
               <div>
-                <Label htmlFor="email">Email Address *</Label>
+                <Label htmlFor="email">Business Email Address *</Label>
                 <Input id="email" type="email" placeholder="john@company.com" className="mt-1" />
               </div>
 
               <div>
-                <Label htmlFor="company">Company Name *</Label>
+                <Label htmlFor="company">Business Name *</Label>
                 <Input id="company" placeholder="Your Company Inc." className="mt-1" />
               </div>
 
@@ -104,39 +109,13 @@ const CTASection = () => {
                 <Input id="website" placeholder="https://yourcompany.com" className="mt-1" />
               </div>
 
-              <div>
-                <Label htmlFor="challenge">Primary Interest</Label>
-                <Select>
-                  <SelectTrigger className="mt-1">
-                    <SelectValue placeholder="Select your main focus" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="visibility">Increase AI Visibility</SelectItem>
-                    <SelectItem value="authority">Build Authority & Citations</SelectItem>
-                    <SelectItem value="leads">Generate AI-Driven Leads</SelectItem>
-                    <SelectItem value="competitive">Competitive Advantage</SelectItem>
-                    <SelectItem value="future">Future-Proof Strategy</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div>
-                <Label htmlFor="details">Additional Details (Optional)</Label>
-                <Textarea 
-                  id="details" 
-                  placeholder="Tell us about your current challenges or goals..." 
-                  className="mt-1 min-h-[80px]"
-                />
-              </div>
-
               <Button variant="hero" size="lg" className="w-full">
-                Get My Free AI Assessment
+                Continue
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
 
               <p className="text-xs text-muted-foreground text-center">
-                By submitting this form, you agree to receive communications from GEO-Pilot. 
+                By submitting this form, you agree to receive communications from GEO-Pilot.
                 We respect your privacy and never share your information.
               </p>
             </form>

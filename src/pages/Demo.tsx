@@ -4,8 +4,9 @@ import OnboardingSlide from "@/components/demo/OnboardingSlide";
 import ComingSoonSlide from "@/components/demo/ComingSoonSlide";
 import DemoNavigation from "@/components/demo/DemoNavigation";
 
+
 const Demo = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef(null);
 
   useEffect(() => {
     // Add smooth scroll behavior

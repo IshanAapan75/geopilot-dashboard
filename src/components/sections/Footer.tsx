@@ -64,27 +64,27 @@ const Footer = () => {
               <div className="space-y-3 mb-6">
                 <div className="flex items-center gap-3 text-sm text-muted-foreground">
                   <Mail className="w-4 h-4" />
-                  <span>hello@geo-pilot.ai</span>
+                  <span>hub@thewelzin.com</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm text-muted-foreground">
                   <Phone className="w-4 h-4" />
-                  <span>+1 (555) 123-4567</span>
+                  <span>+91 7899080498</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm text-muted-foreground">
                   <MapPin className="w-4 h-4" />
-                  <span>San Francisco, CA</span>
+                  <span>Mohali, IN</span>
                 </div>
               </div>
 
               {/* Social Links */}
               <div className="flex items-center gap-4">
-                <a href="#" className="w-8 h-8 bg-muted rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+                <a href="https://x.com/WelzinAI?t=z0HdvXRs8XTiW7OmFWo3JA&s=09" className="w-8 h-8 bg-muted rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
                   <Twitter className="w-4 h-4" />
                 </a>
-                <a href="#" className="w-8 h-8 bg-muted rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+                <a href="https://www.linkedin.com/company/welzin/posts/?feedView=all" className="w-8 h-8 bg-muted rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
                   <Linkedin className="w-4 h-4" />
                 </a>
-                <a href="#" className="w-8 h-8 bg-muted rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+                <a href="https://github.com/welzin-com" className="w-8 h-8 bg-muted rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
                   <Github className="w-4 h-4" />
                 </a>
               </div>

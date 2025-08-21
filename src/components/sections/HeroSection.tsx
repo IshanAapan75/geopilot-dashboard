@@ -1,8 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Bot, Zap } from "lucide-react";
 import aiHeroBg from "@/assets/ai-hero-bg.jpg";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
+
+  const navigate = useNavigate();
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background */}
@@ -30,11 +34,10 @@ const HeroSection = () => {
       <div className="relative z-10 container mx-auto px-6 text-center">
         <div className="max-w-4xl mx-auto">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full text-sm font-medium text-primary mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-primary mb-6">
             <Bot className="w-4 h-4" />
             Pioneering Generative AI Optimization
           </div>
-
           {/* Main Headline */}
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
             Don't Just Rank,
@@ -45,18 +48,18 @@ const HeroSection = () => {
 
           {/* Sub-headline */}
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-            Master Generative AI Optimization (GAIO) and ensure your business is accurately recognized, 
+            Master Generative AI Optimization (GAIO) and ensure your business is accurately recognized,
             understood, and recommended by AI chatbots and intelligent search systems.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <Button variant="hero" size="xl" className="group">
-              Get Your AI Readiness Audit
+            <Button variant="hero" size="xl" className="group" onClick={() => navigate("/auditForm")}>
+              Start Your GEO Journey
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button variant="outline" size="xl">
-              Learn About GAIO
+            <Button variant="outline" size="xl" asChild>
+              <a href="#solution">Learn About GAIO</a>
             </Button>
           </div>
 
