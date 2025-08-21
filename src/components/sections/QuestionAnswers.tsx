@@ -78,9 +78,9 @@ const QuestionsAnswers = () => {
 
             if (res.status >= 200 && res.status < 300) {
                 localStorage.removeItem("auditFormData");
-        toast.success("Thank you for your responses! We'll be in touch soon.");
-        navigate("/thankyou");
-        setIsSubmitted(true);
+                toast.success("Thank you for your responses! We'll be in touch soon.");
+                navigate("/thankyou");
+                setIsSubmitted(true);
             } else {
                 throw new Error("Unexpected response status");
             }
@@ -121,7 +121,8 @@ const QuestionsAnswers = () => {
             };
 
             const res = await axios.post(
-                "http://localhost:5000/api/v1/submit-form",
+                // "http://localhost:5000/api/v1/submit-form",
+                "https://geopilot-dashboard-84n5-backend.vercel.app/api/v1/submit-form",
                 payload,
                 { headers: { "Content-Type": "application/json" } }
             );
