@@ -24,15 +24,15 @@ const Header = () => {
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1 ">
             <img
-              src={baseLogo}   // apna logo file ka path
+              src={baseLogo}   
               alt="teeny tech trek logo"
-              className="h-12 w-auto object-contain"
+              className="h-10 w-auto object-contain"
             />
             <img
-              src={logo}   // apna logo file ka path
-              alt="GEO-Pilot Logo"
+              src={logo}   
+              alt="welzin Logo"
               className="h-12 w-auto object-contain"
             />
             {/* <div>
