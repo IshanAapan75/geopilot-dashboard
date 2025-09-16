@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { useNavigate } from "react-router-dom";
+import baseLogo from "../../assets/baseLogo2.png";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -25,14 +26,19 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center gap-3">
             <img
+              src={baseLogo}   // apna logo file ka path
+              alt="teeny tech trek logo"
+              className="h-12 w-auto object-contain"
+            />
+            <img
               src={logo}   // apna logo file ka path
               alt="GEO-Pilot Logo"
               className="h-12 w-auto object-contain"
             />
-            <div>
-              <span className="text-xl font-bold">GEO-Pilot</span>
+            {/* <div>
+              <span className="text-xl font-bold">GEO-Pilot</span> */}
               {/* <Badge variant="outline" className="ml-2 text-xs">GAIO</Badge> */}
-            </div>
+            {/* </div> */}
           </div>
 
           {/* Desktop Navigation */}
